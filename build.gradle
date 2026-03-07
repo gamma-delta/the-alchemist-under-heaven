@@ -1,6 +1,11 @@
+buildscript {
+	repositories { mavenCentral() }
+}
+
 plugins {
 	id 'net.fabricmc.fabric-loom-remap' version "${loom_version}"
 	id 'maven-publish'
+	id("at.petra-k.pkpcpbp.PKJson5Plugin") version "0.2.0-pre-104"
 }
 
 version = project.mod_version
@@ -22,7 +27,7 @@ loom {
 	splitEnvironmentSourceSets()
 
 	mods {
-		"the-alchemist-under-heaven" {
+		"alchemistunderheaven" {
 			sourceSet sourceSets.main
 			sourceSet sourceSets.client
 		}

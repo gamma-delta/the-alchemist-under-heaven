@@ -1,0 +1,23 @@
+{
+  "block.alchemistunderheaven": {
+    "catch_basin": "Catch Basin",
+    "fume_condensor": "Fume Condensor"
+  },
+  "item.alchemistunderheaven": {
+    silver_ingot: "Silver Ingot",
+    quicksilver: "Quicksilver",
+
+    quicksilver_drop: "Drop of Quicksilver",
+    silver_nugget: "Silver Nugget",
+    gristle: "Gristle",
+    ash: "Ash",
+
+    iodous_nitre: "Iodous Nitre",
+    chthonic_water: "Chthonic Water",
+    hellfire_sludge: "Hellfire Sludge",
+
+    cave_air: "Cave Air",
+    fishscale_glint: "Fish-scale Glint",
+    elsewhere_redolence: "Elsewhere Redolence",
+  }
+}

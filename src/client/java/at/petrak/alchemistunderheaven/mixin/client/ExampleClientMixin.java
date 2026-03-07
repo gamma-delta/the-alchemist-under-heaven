@@ -1,4 +1,4 @@
-package at.petrak.thealchemistunderheaven.mixin.client;
+package at.petrak.alchemistunderheaven.mixin.client;
 
 import net.minecraft.client.Minecraft;
 import org.spongepowered.asm.mixin.Mixin;

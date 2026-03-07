@@ -26,7 +26,7 @@
 		]
 	},
 	"mixins": [
-		"the-alchemist-under-heaven.mixins.json",
+    "alchemistunderheaven.mixins.json",
 		{
 			"config": "the-alchemist-under-heaven.client.mixins.json",
 			"environment": "client"

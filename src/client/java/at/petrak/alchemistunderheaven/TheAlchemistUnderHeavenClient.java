@@ -1,4 +1,4 @@
-package at.petrak.thealchemistunderheaven;
+package at.petrak.alchemistunderheaven;
 
 import net.fabricmc.api.ClientModInitializer;
 

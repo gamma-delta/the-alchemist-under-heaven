@@ -1,6 +1,6 @@
-package at.petrak.thealchemistunderheaven;
+package at.petrak.alchemistunderheaven;
 
-import at.petrak.thealchemistunderheaven.blocks.BlockCatchBasin;
+import at.petrak.alchemistunderheaven.blocks.BlockFurnaceByproductCatcher;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -14,9 +14,13 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import java.util.function.Function;
 
 public final class ModBlocks {
-  public static BlockCatchBasin CATCH_BASIN = register("catch_basin", BlockCatchBasin::new, Blocks.CAULDRON.properties(), true);
+  public static BlockFurnaceByproductCatcher CATCH_BASIN = register("catch_basin", BlockFurnaceByproductCatcher::new,
+      Blocks.CAULDRON.properties(), true);
+  public static BlockFurnaceByproductCatcher FUME_CONDENSOR = register("fume_condensor",
+      BlockFurnaceByproductCatcher::new, Blocks.CAULDRON.properties(), true);
 
-  private static <T extends Block> T register(String name, Function<BlockBehaviour.Properties, T> factory, BlockBehaviour.Properties props, boolean registerItem) {
+  private static <T extends Block> T register(String name, Function<BlockBehaviour.Properties, T> factory,
+      BlockBehaviour.Properties props, boolean registerItem) {
     var blockKey = ResourceKey.create(Registries.BLOCK, TheAlchemistUnderHeaven.modLoc(name));
     T block = factory.apply(props.setId(blockKey));
     if (registerItem) {
