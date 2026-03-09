@@ -10,14 +10,16 @@
     quicksilver_drop: "Drop of Quicksilver",
     silver_nugget: "Silver Nugget",
     gristle: "Gristle",
-    ash: "Ash",
+    ashes: "Ashes",
 
-    iodous_nitre: "Iodous Nitre",
+    sulphur: "Sulphur",
+    natron: "Natron",
     chthonic_water: "Chthonic Water",
-    hellfire_sludge: "Hellfire Sludge",
 
+    verdure: "Verdure",
+    pain_of_death: "Pain of Death",
     cave_air: "Cave Air",
+    redolent_lustre: "Redolent Lustre",
     fishscale_glint: "Fish-scale Glint",
-    elsewhere_redolence: "Elsewhere Redolence",
   }
 }

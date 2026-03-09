@@ -24,25 +24,35 @@ import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import org.jetbrains.annotations.Nullable;
 
+// Sand -> basin salt?
+// Kelp -> basin salt? ash? same ash as cooking logs or caustic ash?
+// Redstone ore -> basin quicksilver (whole ingot)
+// Coal ore -> sulfur
+// "Astromyxin"
+// Need a way to get niter (potassium nitrate, also called natron archaichally)
+// traditionally made by fermenting manure and urine! gross! i'm not adding shit to my mod!
+// thermal expansion gets sulfur from grinding nether materials + lapis,
+// and niter from grinding sandstone.
+// railcraft had sulfur and niter ore but i'd like to skip ore worldgen if i can ...
+// maybe nitre is common from end blocks, although you don't smelt anything from there but purpur
+
 // All the stuff you put over and below the furnace are the same blockentity;
 // their behavior is switched based on the block
 public class BEFurnaceByproductCatcher extends BaseContainerBlockEntity {
-  private NonNullList<ItemStack> items;
+  private NonNullList<ItemStack> results;
   private final RecipeManager.CachedCheck<SingleRecipeInput, RecipeFurnaceByproduct> quickCheck;
 
   public BEFurnaceByproductCatcher(BlockPos blockPos, BlockState blockState) {
     super(ModBlockEntities.FURNACE_BYPRODUCT_CATCHER, blockPos, blockState);
-    this.items = NonNullList.withSize(1, ItemStack.EMPTY);
+    this.results = NonNullList.withSize(1, ItemStack.EMPTY);
     // I believe this caches the most recently used recipe to avoid one million lookups
     this.quickCheck = RecipeManager.createCheck(ModRecipeStuff.FURNACE_BYPRODUCT);
   }
 
-  public static void onFurnaceSmeltItem(ItemStack ingredient, ServerLevel level, BlockPos furnacePos,
-      BlockState furnaceState, AbstractFurnaceBlockEntity furnace) {
+  public static void onFurnaceSmeltItem(ItemStack ingredient, ServerLevel level, BlockPos furnacePos, BlockState furnaceState, AbstractFurnaceBlockEntity furnace) {
   }
 
-  private static boolean checkFurnaceByproductSlot(ServerLevel level, BlockPos furnacePos, Block catchTy,
-      int blocksAbove, @Nullable ItemStack output) {
+  private static boolean checkFurnaceByproductSlot(ServerLevel level, BlockPos furnacePos, Block catchTy, int blocksAbove, @Nullable ItemStack output) {
     var hopefulPos = furnacePos.offset(0, blocksAbove, 0);
     var bs = level.getBlockState(furnacePos);
     if (!bs.is(catchTy)) return false;
@@ -50,7 +60,8 @@ public class BEFurnaceByproductCatcher extends BaseContainerBlockEntity {
     var mbCatcher = level.getBlockEntity(hopefulPos, ModBlockEntities.FURNACE_BYPRODUCT_CATCHER);
     if (mbCatcher.isEmpty()) {
       TheAlchemistUnderHeaven.LOGGER.warn("at {} found {}, which should have a BEFurnaceByProductCatcher but didn't",
-          hopefulPos, bs);
+          hopefulPos, bs
+      );
       return false;
     }
     var catcher = mbCatcher.get();
@@ -76,12 +87,12 @@ public class BEFurnaceByproductCatcher extends BaseContainerBlockEntity {
 
   @Override
   protected NonNullList<ItemStack> getItems() {
-    return this.items;
+    return this.results;
   }
 
   @Override
   protected void setItems(NonNullList<ItemStack> items) {
-    this.items = items;
+    this.results = items;
   }
 
   @Override
@@ -92,12 +103,12 @@ public class BEFurnaceByproductCatcher extends BaseContainerBlockEntity {
   @Override
   protected void loadAdditional(ValueInput input) {
     super.loadAdditional(input);
-    ContainerHelper.loadAllItems(input, this.items);
+    ContainerHelper.loadAllItems(input, this.results);
   }
 
   @Override
   protected void saveAdditional(ValueOutput output) {
-    ContainerHelper.saveAllItems(output, this.items);
+    ContainerHelper.saveAllItems(output, this.results);
     super.saveAdditional(output);
   }
 

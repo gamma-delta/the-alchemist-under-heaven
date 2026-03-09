@@ -13,8 +13,11 @@ import org.jetbrains.annotations.Nullable;
 
 // the forge docs are better than the fabric docs here
 // https://docs.neoforged.net/docs/resources/server/recipes/custom/
-public record RecipeFurnaceByproduct(Ingredient ingredient, @Nullable ItemStack catchBasin,
-                                     @Nullable ItemStack fumeCatcher) implements Recipe<SingleRecipeInput> {
+public record RecipeFurnaceByproduct(
+    Ingredient ingredient,
+    @Nullable ItemStackWithChance catchBasin,
+    @Nullable ItemStackWithChance fumeCatcher
+) implements Recipe<SingleRecipeInput> {
   @Override
   public boolean matches(SingleRecipeInput recipeInput, Level level) {
     return this.ingredient.test(recipeInput.item());
@@ -27,7 +30,7 @@ public record RecipeFurnaceByproduct(Ingredient ingredient, @Nullable ItemStack 
     if (this.catchBasin == null) {
       return ItemStack.EMPTY;
     } else {
-      return this.catchBasin.copy();
+      return this.catchBasin.stack().copy();
     }
   }
 
@@ -53,21 +56,23 @@ public record RecipeFurnaceByproduct(Ingredient ingredient, @Nullable ItemStack 
   }
 
   public static final class Serializer implements RecipeSerializer<RecipeFurnaceByproduct> {
-    public static final MapCodec<RecipeFurnaceByproduct> CODEC = RecordCodecBuilder.mapCodec(i -> i.group(
-        Ingredient.CODEC.fieldOf("ingredient").forGetter(RecipeFurnaceByproduct::ingredient),
-        ItemStack.CODEC.lenientOptionalFieldOf("catchBasin", ItemStack.EMPTY).forGetter(RecipeFurnaceByproduct::catchBasin),
-        ItemStack.CODEC.lenientOptionalFieldOf("fumeCatcher", ItemStack.EMPTY).forGetter(RecipeFurnaceByproduct::fumeCatcher)
-    ).apply(i, RecipeFurnaceByproduct::new));
+    public static final MapCodec<RecipeFurnaceByproduct> CODEC = RecordCodecBuilder.mapCodec(
+        i -> i.group(
+            Ingredient.CODEC.fieldOf("ingredient").forGetter(RecipeFurnaceByproduct::ingredient),
+            ItemStackWithChance.NICE_CODEC.lenientOptionalFieldOf("catchBasin", null)
+                .forGetter(RecipeFurnaceByproduct::catchBasin),
+            ItemStackWithChance.NICE_CODEC.lenientOptionalFieldOf("fumeCatcher", null)
+                .forGetter(RecipeFurnaceByproduct::fumeCatcher)
+        ).apply(i, RecipeFurnaceByproduct::new));
     // this codec doesn't need to be written as extensible, as the bytebufs only exist while the game is running
     // so, if the schema changes, there will never be a mismatch (the server and client will agree on the new schema)
     // not so for the mapcodec! because that is used for reading the datagen
-    public static final StreamCodec<RegistryFriendlyByteBuf, RecipeFurnaceByproduct> STREAM_CODEC =
-        StreamCodec.composite(
-            Ingredient.CONTENTS_STREAM_CODEC, RecipeFurnaceByproduct::ingredient,
-            ItemStack.OPTIONAL_STREAM_CODEC, RecipeFurnaceByproduct::catchBasin,
-            ItemStack.OPTIONAL_STREAM_CODEC, RecipeFurnaceByproduct::fumeCatcher,
-            RecipeFurnaceByproduct::new
-        );
+    public static final StreamCodec<RegistryFriendlyByteBuf, RecipeFurnaceByproduct> STREAM_CODEC = StreamCodec.composite(
+        Ingredient.CONTENTS_STREAM_CODEC, RecipeFurnaceByproduct::ingredient,
+        ItemStackWithChance.STREAM_CODEC, RecipeFurnaceByproduct::catchBasin,
+        ItemStackWithChance.STREAM_CODEC, RecipeFurnaceByproduct::fumeCatcher,
+        RecipeFurnaceByproduct::new
+    );
 
     @Override
     public MapCodec<RecipeFurnaceByproduct> codec() {
@@ -80,3 +85,4 @@ public record RecipeFurnaceByproduct(Ingredient ingredient, @Nullable ItemStack 
     }
   }
 }
+
