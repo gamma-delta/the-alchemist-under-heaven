@@ -23,7 +23,7 @@ public final class ModItems {
   public static final Item ASHES = simple("ashes", new Item.Properties());
 
   public static final Item SULPHUR = simple("sulphur", new Item.Properties());
-  public static final Item NATRON = simple("natron", new Item.Properties());
+  public static final Item NITRE = simple("nitre", new Item.Properties());
   public static final Item CHTHONIC_WATER = simple("chthonic_water", new Item.Properties());
 
   public static final Item VERDURE = simple("verdure", new Item.Properties());
@@ -41,7 +41,7 @@ public final class ModItems {
   // also used in ModBlocks for registering block items
   public static <T extends Item> T register(String name, Function<Item.Properties, T> factory, Item.Properties props) {
     var key = ResourceKey.create(Registries.ITEM, TheAlchemistUnderHeaven.modLoc(name));
-    T item = factory.apply(props);
+    T item = factory.apply(props.setId(key));
     Registry.register(BuiltInRegistries.ITEM, key, item);
     return item;
   }

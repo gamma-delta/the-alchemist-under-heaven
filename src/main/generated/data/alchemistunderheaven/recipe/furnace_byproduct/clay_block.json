@@ -1,0 +1,10 @@
+{
+  "type": "alchemistunderheaven:furnace_byproduct",
+  "fume_condenser": {
+    "stack": {
+      "count": 1,
+      "id": "alchemistunderheaven:chthonic_water"
+    }
+  },
+  "ingredient": "minecraft:clay"
+}

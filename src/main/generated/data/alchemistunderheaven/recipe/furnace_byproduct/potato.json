@@ -1,0 +1,11 @@
+{
+  "type": "alchemistunderheaven:furnace_byproduct",
+  "essence_filter": {
+    "chance": 0.1,
+    "stack": {
+      "count": 1,
+      "id": "alchemistunderheaven:verdure"
+    }
+  },
+  "ingredient": "minecraft:potato"
+}

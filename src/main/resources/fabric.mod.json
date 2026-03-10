@@ -1,41 +1,41 @@
 {
-	"schemaVersion": 1,
-	"id": "the-alchemist-under-heaven",
-	"version": "${version}",
-	"name": "The Alchemist Under Heaven",
-	"description": "Nostalgiaslop",
-	"authors": [
-		"petrak@7604"
-	],
-	"contact": {
-		"homepage": "https://petra-k.at",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
-	},
-	"license": "MIT",
-	"icon": "assets/the-alchemist-under-heaven/icon.png",
-	"environment": "*",
-	"entrypoints": {
-		"main": [
-			"at.petrak.thealchemistunderheaven.TheAlchemistUnderHeaven"
-		],
-		"client": [
-			"at.petrak.thealchemistunderheaven.TheAlchemistUnderHeavenClient"
-		],
-		"fabric-datagen": [
-			"at.petrak.thealchemistunderheaven.TheAlchemistUnderHeavenDataGenerator"
-		]
-	},
-	"mixins": [
+  "schemaVersion": 1,
+  "id": "alchemistunderheaven",
+  "version": "${version}",
+  "name": "The Alchemist Under Heaven",
+  "description": "Nostalgiaslop",
+  "authors": [
+    "petrak@7604"
+  ],
+  "contact": {
+    "homepage": "https://petra-k.at",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+  "license": "MIT",
+  "icon": "assets/alchemistunderheaven/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "at.petrak.alchemistunderheaven.TheAlchemistUnderHeaven"
+    ],
+    "client": [
+      "at.petrak.alchemistunderheaven.TheAlchemistUnderHeavenClient"
+    ],
+    "fabric-datagen": [
+      "at.petrak.alchemistunderheaven.TheAlchemistUnderHeavenDataGenerator"
+    ]
+  },
+  "mixins": [
     "alchemistunderheaven.mixins.json",
-		{
-			"config": "the-alchemist-under-heaven.client.mixins.json",
-			"environment": "client"
-		}
-	],
-	"depends": {
-		"fabricloader": ">=0.18.4",
-		"minecraft": "~1.21.11",
-		"java": ">=21",
-		"fabric-api": "*"
-	}
+    {
+      "config": "alchemistunderheaven.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.4",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
 }

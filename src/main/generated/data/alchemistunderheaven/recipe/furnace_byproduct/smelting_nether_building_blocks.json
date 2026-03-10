@@ -1,0 +1,23 @@
+{
+  "type": "alchemistunderheaven:furnace_byproduct",
+  "essence_filter": {
+    "chance": 0.01,
+    "stack": {
+      "count": 1,
+      "id": "alchemistunderheaven:pain_of_death"
+    }
+  },
+  "fume_condenser": {
+    "chance": 0.5,
+    "stack": {
+      "count": 1,
+      "id": "alchemistunderheaven:sulphur"
+    }
+  },
+  "ingredient": [
+    "minecraft:nether_bricks",
+    "minecraft:basalt",
+    "minecraft:polished_blackstone_bricks",
+    "minecraft:quartz_block"
+  ]
+}

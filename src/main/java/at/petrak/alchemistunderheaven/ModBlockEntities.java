@@ -13,14 +13,17 @@ public class ModBlockEntities {
       "furnace_byproduct_catcher",
       BEFurnaceByproductCatcher::new,
       ModBlocks.CATCH_BASIN,
-      ModBlocks.FUME_CONDENSOR
+      ModBlocks.FUME_CONDENSER,
+      ModBlocks.ESSENCE_FILTER
   );
 
   // WHY does fabric not have a thing for this
   private static <T extends BlockEntity> BlockEntityType<T> register(String name,
-      FabricBlockEntityTypeBuilder.Factory<? extends T> entityFactory, Block... blocks) {
+                                                                     FabricBlockEntityTypeBuilder.Factory<? extends T> entityFactory, Block... blocks
+  ) {
     return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, TheAlchemistUnderHeaven.modLoc(name),
-        FabricBlockEntityTypeBuilder.<T>create(entityFactory, blocks).build());
+        FabricBlockEntityTypeBuilder.<T>create(entityFactory, blocks).build()
+    );
   }
 
   public static void init() {

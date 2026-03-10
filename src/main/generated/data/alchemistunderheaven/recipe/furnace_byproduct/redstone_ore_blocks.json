@@ -1,0 +1,10 @@
+{
+  "type": "alchemistunderheaven:furnace_byproduct",
+  "catch_basin": {
+    "stack": {
+      "count": 1,
+      "id": "alchemistunderheaven:quicksilver"
+    }
+  },
+  "ingredient": "#minecraft:redstone_ores"
+}

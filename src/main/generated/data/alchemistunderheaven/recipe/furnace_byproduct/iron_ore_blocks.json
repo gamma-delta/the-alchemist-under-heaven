@@ -1,0 +1,17 @@
+{
+  "type": "alchemistunderheaven:furnace_byproduct",
+  "catch_basin": {
+    "stack": {
+      "count": 1,
+      "id": "minecraft:iron_ingot"
+    }
+  },
+  "essence_filter": {
+    "chance": 0.1,
+    "stack": {
+      "count": 1,
+      "id": "alchemistunderheaven:redolent_lustre"
+    }
+  },
+  "ingredient": "#minecraft:iron_ores"
+}

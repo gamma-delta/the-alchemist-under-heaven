@@ -1,0 +1,24 @@
+{
+  "type": "alchemistunderheaven:furnace_byproduct",
+  "catch_basin": {
+    "stack": {
+      "count": 1,
+      "id": "alchemistunderheaven:ashes"
+    }
+  },
+  "essence_filter": {
+    "chance": 0.2,
+    "stack": {
+      "count": 1,
+      "id": "alchemistunderheaven:fishscale_glint"
+    }
+  },
+  "fume_condenser": {
+    "chance": 0.5,
+    "stack": {
+      "count": 1,
+      "id": "alchemistunderheaven:nitre"
+    }
+  },
+  "ingredient": "minecraft:sea_pickle"
+}

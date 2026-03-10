@@ -1,0 +1,23 @@
+{
+  "type": "alchemistunderheaven:furnace_byproduct",
+  "catch_basin": {
+    "chance": 0.5,
+    "stack": {
+      "count": 1,
+      "id": "minecraft:netherite_scrap"
+    }
+  },
+  "essence_filter": {
+    "stack": {
+      "count": 1,
+      "id": "alchemistunderheaven:pain_of_death"
+    }
+  },
+  "fume_condenser": {
+    "stack": {
+      "count": 1,
+      "id": "alchemistunderheaven:sulphur"
+    }
+  },
+  "ingredient": "minecraft:ancient_debris"
+}

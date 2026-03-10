@@ -1,0 +1,24 @@
+{
+  "type": "alchemistunderheaven:furnace_byproduct",
+  "catch_basin": {
+    "stack": {
+      "count": 1,
+      "id": "alchemistunderheaven:quicksilver"
+    }
+  },
+  "essence_filter": {
+    "chance": 0.1,
+    "stack": {
+      "count": 1,
+      "id": "alchemistunderheaven:pain_of_death"
+    }
+  },
+  "fume_condenser": {
+    "chance": 0.5,
+    "stack": {
+      "count": 1,
+      "id": "alchemistunderheaven:sulphur"
+    }
+  },
+  "ingredient": "minecraft:nether_gold_ore"
+}

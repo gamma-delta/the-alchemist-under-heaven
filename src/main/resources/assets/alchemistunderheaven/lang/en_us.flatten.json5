@@ -1,7 +1,8 @@
 {
   "block.alchemistunderheaven": {
     "catch_basin": "Catch Basin",
-    "fume_condensor": "Fume Condensor"
+    "fume_condenser": "Fume Condenser",
+    "essence_filter": "Essence Filter"
   },
   "item.alchemistunderheaven": {
     silver_ingot: "Silver Ingot",
@@ -13,7 +14,7 @@
     ashes: "Ashes",
 
     sulphur: "Sulphur",
-    natron: "Natron",
+    nitre: "Nitre",
     chthonic_water: "Chthonic Water",
 
     verdure: "Verdure",

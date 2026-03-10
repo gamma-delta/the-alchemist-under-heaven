@@ -1,0 +1,15 @@
+{
+  "type": "alchemistunderheaven:furnace_byproduct",
+  "essence_filter": {
+    "chance": 0.02,
+    "stack": {
+      "count": 1,
+      "id": "alchemistunderheaven:cave_air"
+    }
+  },
+  "ingredient": [
+    "minecraft:stone_bricks",
+    "minecraft:deepslate_bricks",
+    "minecraft:deepslate_tiles"
+  ]
+}

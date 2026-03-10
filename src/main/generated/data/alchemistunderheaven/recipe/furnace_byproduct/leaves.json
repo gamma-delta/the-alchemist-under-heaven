@@ -1,0 +1,18 @@
+{
+  "type": "alchemistunderheaven:furnace_byproduct",
+  "catch_basin": {
+    "chance": 0.1,
+    "stack": {
+      "count": 1,
+      "id": "alchemistunderheaven:ashes"
+    }
+  },
+  "essence_filter": {
+    "chance": 0.01,
+    "stack": {
+      "count": 1,
+      "id": "alchemistunderheaven:verdure"
+    }
+  },
+  "ingredient": "#minecraft:leaves"
+}

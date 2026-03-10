@@ -1,0 +1,17 @@
+{
+  "type": "alchemistunderheaven:furnace_byproduct",
+  "catch_basin": {
+    "stack": {
+      "count": 1,
+      "id": "alchemistunderheaven:quicksilver_drop"
+    }
+  },
+  "essence_filter": {
+    "chance": 0.01,
+    "stack": {
+      "count": 1,
+      "id": "alchemistunderheaven:redolent_lustre"
+    }
+  },
+  "ingredient": "minecraft:raw_gold"
+}

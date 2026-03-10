@@ -1,0 +1,18 @@
+{
+  "type": "alchemistunderheaven:furnace_byproduct",
+  "essence_filter": {
+    "chance": 0.01,
+    "stack": {
+      "count": 1,
+      "id": "alchemistunderheaven:cave_air"
+    }
+  },
+  "fume_condenser": {
+    "chance": 0.2,
+    "stack": {
+      "count": 1,
+      "id": "alchemistunderheaven:nitre"
+    }
+  },
+  "ingredient": "#c:sandstone/blocks"
+}

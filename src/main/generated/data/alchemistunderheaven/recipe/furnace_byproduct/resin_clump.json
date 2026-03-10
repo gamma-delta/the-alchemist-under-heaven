@@ -1,0 +1,18 @@
+{
+  "type": "alchemistunderheaven:furnace_byproduct",
+  "catch_basin": {
+    "chance": 0.1,
+    "stack": {
+      "count": 1,
+      "id": "minecraft:resin_clump"
+    }
+  },
+  "fume_condenser": {
+    "chance": 0.1,
+    "stack": {
+      "count": 1,
+      "id": "alchemistunderheaven:pain_of_death"
+    }
+  },
+  "ingredient": "minecraft:resin_clump"
+}

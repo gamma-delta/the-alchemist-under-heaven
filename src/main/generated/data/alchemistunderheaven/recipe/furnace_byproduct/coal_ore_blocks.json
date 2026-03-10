@@ -1,0 +1,10 @@
+{
+  "type": "alchemistunderheaven:furnace_byproduct",
+  "fume_condenser": {
+    "stack": {
+      "count": 1,
+      "id": "alchemistunderheaven:sulphur"
+    }
+  },
+  "ingredient": "#minecraft:coal_ores"
+}

@@ -1,0 +1,11 @@
+{
+  "type": "alchemistunderheaven:furnace_byproduct",
+  "fume_condenser": {
+    "chance": 0.5,
+    "stack": {
+      "count": 1,
+      "id": "alchemistunderheaven:chthonic_water"
+    }
+  },
+  "ingredient": "#minecraft:terracotta"
+}

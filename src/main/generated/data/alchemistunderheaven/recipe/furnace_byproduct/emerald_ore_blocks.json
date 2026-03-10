@@ -1,0 +1,10 @@
+{
+  "type": "alchemistunderheaven:furnace_byproduct",
+  "essence_filter": {
+    "stack": {
+      "count": 1,
+      "id": "alchemistunderheaven:redolent_lustre"
+    }
+  },
+  "ingredient": "#minecraft:emerald_ores"
+}

@@ -9,14 +9,16 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
 
 // the forge docs are better than the fabric docs here
 // https://docs.neoforged.net/docs/resources/server/recipes/custom/
 public record RecipeFurnaceByproduct(
     Ingredient ingredient,
-    @Nullable ItemStackWithChance catchBasin,
-    @Nullable ItemStackWithChance fumeCatcher
+    Optional<ItemStackWithChance> catchBasin,
+    Optional<ItemStackWithChance> fumeCondenser,
+    Optional<ItemStackWithChance> essenceFilter
 ) implements Recipe<SingleRecipeInput> {
   @Override
   public boolean matches(SingleRecipeInput recipeInput, Level level) {
@@ -27,11 +29,7 @@ public record RecipeFurnaceByproduct(
   // Pretend there's only one output. Lol. Lmao even.
   @Override
   public ItemStack assemble(SingleRecipeInput recipeInput, HolderLookup.Provider provider) {
-    if (this.catchBasin == null) {
-      return ItemStack.EMPTY;
-    } else {
-      return this.catchBasin.stack().copy();
-    }
+    return this.catchBasin.map(iswc -> iswc.stack().copy()).orElse(ItemStack.EMPTY);
   }
 
   @Override
@@ -59,18 +57,21 @@ public record RecipeFurnaceByproduct(
     public static final MapCodec<RecipeFurnaceByproduct> CODEC = RecordCodecBuilder.mapCodec(
         i -> i.group(
             Ingredient.CODEC.fieldOf("ingredient").forGetter(RecipeFurnaceByproduct::ingredient),
-            ItemStackWithChance.NICE_CODEC.lenientOptionalFieldOf("catchBasin", null)
+            ItemStackWithChance.NICE_CODEC.optionalFieldOf("catch_basin")
                 .forGetter(RecipeFurnaceByproduct::catchBasin),
-            ItemStackWithChance.NICE_CODEC.lenientOptionalFieldOf("fumeCatcher", null)
-                .forGetter(RecipeFurnaceByproduct::fumeCatcher)
+            ItemStackWithChance.NICE_CODEC.optionalFieldOf("fume_condenser")
+                .forGetter(RecipeFurnaceByproduct::fumeCondenser),
+            ItemStackWithChance.NICE_CODEC.optionalFieldOf("essence_filter")
+                .forGetter(RecipeFurnaceByproduct::essenceFilter)
         ).apply(i, RecipeFurnaceByproduct::new));
     // this codec doesn't need to be written as extensible, as the bytebufs only exist while the game is running
     // so, if the schema changes, there will never be a mismatch (the server and client will agree on the new schema)
     // not so for the mapcodec! because that is used for reading the datagen
     public static final StreamCodec<RegistryFriendlyByteBuf, RecipeFurnaceByproduct> STREAM_CODEC = StreamCodec.composite(
         Ingredient.CONTENTS_STREAM_CODEC, RecipeFurnaceByproduct::ingredient,
-        ItemStackWithChance.STREAM_CODEC, RecipeFurnaceByproduct::catchBasin,
-        ItemStackWithChance.STREAM_CODEC, RecipeFurnaceByproduct::fumeCatcher,
+        ItemStackWithChance.OPTIONAL_STREAM_CODEC, RecipeFurnaceByproduct::catchBasin,
+        ItemStackWithChance.OPTIONAL_STREAM_CODEC, RecipeFurnaceByproduct::fumeCondenser,
+        ItemStackWithChance.OPTIONAL_STREAM_CODEC, RecipeFurnaceByproduct::essenceFilter,
         RecipeFurnaceByproduct::new
     );
 

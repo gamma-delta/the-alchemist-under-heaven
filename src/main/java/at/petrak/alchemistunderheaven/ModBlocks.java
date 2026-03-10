@@ -15,12 +15,18 @@ import java.util.function.Function;
 
 public final class ModBlocks {
   public static BlockFurnaceByproductCatcher CATCH_BASIN = register("catch_basin", BlockFurnaceByproductCatcher::new,
-      Blocks.CAULDRON.properties(), true);
-  public static BlockFurnaceByproductCatcher FUME_CONDENSOR = register("fume_condensor",
-      BlockFurnaceByproductCatcher::new, Blocks.CAULDRON.properties(), true);
+      Blocks.CAULDRON.properties(), true
+  );
+  public static BlockFurnaceByproductCatcher FUME_CONDENSER = register("fume_condenser",
+      BlockFurnaceByproductCatcher::new, Blocks.CAULDRON.properties(), true
+  );
+  public static BlockFurnaceByproductCatcher ESSENCE_FILTER = register("essence_filter",
+      BlockFurnaceByproductCatcher::new, Blocks.CAULDRON.properties(), true
+  );
 
   private static <T extends Block> T register(String name, Function<BlockBehaviour.Properties, T> factory,
-      BlockBehaviour.Properties props, boolean registerItem) {
+                                              BlockBehaviour.Properties props, boolean registerItem
+  ) {
     var blockKey = ResourceKey.create(Registries.BLOCK, TheAlchemistUnderHeaven.modLoc(name));
     T block = factory.apply(props.setId(blockKey));
     if (registerItem) {
